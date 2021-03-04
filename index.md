@@ -1,37 +1,52 @@
-## Welcome to GitHub Pages
+Types of Functions: their uses and an examination of their difference
 
-You can use the [editor on GitHub](https://github.com/Pocatello/DBFoundations/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Github links: 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+https://github.com/Pocatello/DBFoundations/blob/main/Assignment 07_Joshua Levenson.docx 
 
-### Markdown
+https://github.com/Pocatello/DBFoundations/blob/main/Assignment07_JLevenson.sql
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+1.	Explain when you would use a SQL UDF.
+User defined functions (UDF) can be used independently of the source code. Similarly, to store procedures, UDFs do not need to be reparsed and reoptimized with each use, resulting in faster execution times. 
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
+1.	Explain are the differences between Scalar, Inline, and Multi-Statement Functions.
+A scalar function accepts any number of parameters but delivers one vale. 
+This could be as simple as 5*5 =
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+Inline (or simple) functions return a table of data with specific parameters in a result set. The result set aspect is similar to a view but an inline can accept parameters . In Figure 1, below an inline function is used to return a table of films that have a duration longer than 150 minutes. 
 
-[Link](url) and ![Image](src)
-```
+Figure 1
+ 
+SELECT
+*
+FROM
+db.fnFilmsByDuration(150)
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Figure description: All films 150 minutes and longer will be displayed
+ 
+A multi-statement function, See Figure 2, after additional processing. However, it could be created by a union join statement. The differences between an inline function and a multi-statement function are as follows: it declares the return table structure, it starts and ends with the Begin/End block and it must be used to Return operator. 
 
-### Jekyll Themes
+Figure 2
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Pocatello/DBFoundations/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Note: insert birthday date of desired director below.
+INSERT INTO @people (
+PersonName,
+PersonRole,
+Dob
+)
+SELECT
+DirectorName,
+'Director',
+DirectorDob
+FROM
+tblDirector
+WHERE
+Year(DirectorDob) = @BirthYear
 
-### Support or Contact
+Figure description: This UDF will display all birthdays of the director that are input. This would be helpful to understand the patterns of film and era of a particular director or film.
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+
+
