@@ -1,10 +1,6 @@
 Types of Functions: their uses and an examination of their difference
 
-Github links: 
 
-https://github.com/Pocatello/DBFoundations/blob/main/Assignment 07_Joshua Levenson.docx 
-
-https://github.com/Pocatello/DBFoundations/blob/main/Assignment07_JLevenson.sql
 
 1.	Explain when you would use a SQL UDF.
 User defined functions (UDF) can be used independently of the source code. Similarly, to store procedures, UDFs do not need to be reparsed and reoptimized with each use, resulting in faster execution times. 
